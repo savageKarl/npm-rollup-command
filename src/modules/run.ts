@@ -1,7 +1,7 @@
 import { CommandCaller, hookOptions } from "./command";
 import { spawn } from "child_process";
 
-export default async (command: CommandCaller) => {
+export const run = async (command: CommandCaller) => {
   if (typeof command === "function") return await command();
   if (typeof command !== "string")
     return console.error(
@@ -15,3 +15,15 @@ export default async (command: CommandCaller) => {
     });
   });
 };
+
+export const runCommand = (command: CommandCaller | CommandCaller[]) => {
+  if (Array.isArray(command)) {
+    command.forEach((v) => {
+      run(v);
+    });
+  } else {
+    run(command);
+  }
+};
+
+export type Run = typeof runCommand;
