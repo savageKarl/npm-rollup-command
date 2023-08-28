@@ -1,4 +1,4 @@
-import { CommandCaller, hookOptions } from "./command";
+import { CommandCaller } from "./command";
 import { spawn } from "child_process";
 
 export const run = async (command: CommandCaller) => {

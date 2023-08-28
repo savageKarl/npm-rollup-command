@@ -1,17 +1,17 @@
 {
   "name": "savage-rollup-command",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "description": "一个rollup插件，用于在rollup构建过程中执行自定义命令。",
   "main": "dist/index.cjs",
   "module": "./dist/index.mjs",
   "files": [
     "dist/index.cjs",
     "dist/index.mjs",
-    "dist/index.d.ts",
+    "dist/main.d.ts",
     "dist/index.cjs.map",
     "dist/index.mjs.map"
   ],
-  "types": "./dist/index.d.ts",
+  "types": "./dist/main.d.ts",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -22,10 +22,10 @@
   "scripts": {
     "dev": "cross-env mode=dev nodemon rollup.config.js",
     "build": "cross-env mode=pro rollup -c rollup.config.js",
-    "publish": "npm run build && npm publish --access public"
+    "publish": "npm publish --access public"
   },
   "devDependencies": {
-    "savage-rollup-config": "^0.0.3"
+    "savage-rollup-config": "^0.0.8"
   },
   "dependencies": {
     "savage-data-types": "^1.0.7"

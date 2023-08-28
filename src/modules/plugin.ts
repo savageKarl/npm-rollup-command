@@ -9,14 +9,14 @@ export const rollupCommand = (options?: hookOptions) => {
   return {
     name: "savage-rollup-command",
     options(o: InputOptions) {
-      options?.options(o, runCommand);
+      if (options?.options) options?.options(o, runCommand);
       return o;
     },
     buildStart() {
-      options?.buildStart(runCommand);
+      if (options?.buildStart) options?.buildStart(runCommand);
     },
     buildEnd() {
-      options?.buildEnd(runCommand);
+      if (options?.buildEnd) options?.buildEnd(runCommand);
     },
   };
 };
