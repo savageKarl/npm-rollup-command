@@ -7,8 +7,6 @@ export default getRollupConfig(pkg, function (options) {
 	const currentPluginIndex = options[0].plugins.findIndex((v, i) => {
 		return v.name === "savage-rollup-command";
 	});
-	// options[0].external = [];
-	// console.log(options[0].external);
 	options[0].plugins.splice(currentPluginIndex, 1);
 
 	return options;
