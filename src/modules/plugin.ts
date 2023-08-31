@@ -1,22 +1,45 @@
-import type { InputOptions } from "rollup";
+import type { InputOptions, OutputOptions, OutputChunk } from "rollup";
 
-import { hookOptions, defaultHookOptions } from "./command";
+import del from "del";
+
+import { hookOptions, defaultHookOptions, IContext } from "./command";
 import { runCommand } from "./run";
 
-export const rollupCommand = (options?: hookOptions) => {
-  options = Object.assign({}, defaultHookOptions, options);
+const context: IContext = {
+	run: runCommand,
+	del,
+};
 
-  return {
-    name: "savage-rollup-command",
-    options(o: InputOptions) {
-      if (options?.options) options?.options(o, runCommand);
-      return o;
-    },
-    buildStart() {
-      if (options?.buildStart) options?.buildStart(runCommand);
-    },
-    buildEnd() {
-      if (options?.buildEnd) options?.buildEnd(runCommand);
-    },
-  };
+export const rollupCommand = (hookOptions?: hookOptions) => {
+	const mergedOptions = Object.assign(
+		{},
+		defaultHookOptions,
+		hookOptions
+	) as Required<hookOptions>;
+
+	return {
+		name: "savage-rollup-command",
+		options(options: InputOptions) {
+			mergedOptions.options(context, options);
+			return options;
+		},
+		buildStart() {
+			mergedOptions.buildStart(context);
+		},
+		buildEnd() {
+			mergedOptions.buildEnd(context);
+		},
+		outputOptions(options: OutputOptions) {
+			mergedOptions.outputOptions(context, options);
+		},
+		renderStart(outputOptions: OutputOptions, inputOptions: InputOptions) {
+			mergedOptions.renderStart(context, outputOptions, inputOptions);
+		},
+		writeBundle(options: OutputOptions, bundle: OutputChunk) {
+			mergedOptions.writeBundle(context, options, bundle);
+		},
+		closeBundle() {
+			mergedOptions.closeBundle(context);
+		},
+	};
 };
