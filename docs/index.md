@@ -1,18 +1,13 @@
 ---
 layout: home
 
+title: 首页
+
 hero:
-  name: VitePress
-  text: Vite & Vue powered static site generator.
-  tagline: Lorem ipsum...
-  image:
-    src: /logo.png
-    alt: VitePress
+  name: savage-rollup-command
+  text: 说明文档
   actions:
     - theme: brand
-      text: Get Started
-      link: /guide/what-is-vitepress
-    - theme: alt
-      text: View on GitHub
-      link: https://github.com/vuejs/vitepress
+      text: 查看
+      link: /dist/modules
 ---

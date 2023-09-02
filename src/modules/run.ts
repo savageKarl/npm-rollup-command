@@ -1,7 +1,8 @@
-import { CommandCaller } from './command'
 import { spawn } from 'child_process'
 
-export const run = async (command: CommandCaller) => {
+export type CommandCaller = string | (() => void)
+
+export async function execute(command: CommandCaller) {
 	if (typeof command === 'function') return await command()
 	if (typeof command !== 'string')
 		return console.error(
@@ -16,14 +17,16 @@ export const run = async (command: CommandCaller) => {
 	})
 }
 
-export const runCommand = (command: CommandCaller | CommandCaller[]) => {
+export function runCommand(command: CommandCaller | CommandCaller[]) {
 	if (Array.isArray(command)) {
 		command.forEach(v => {
-			run(v)
+			execute(v)
 		})
 	} else {
-		run(command)
+		execute(command)
 	}
 }
 
-export type Run = typeof runCommand
+export interface RunCommand {
+	(command: CommandCaller | CommandCaller[]): void
+}

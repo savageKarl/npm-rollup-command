@@ -1,1 +1,1 @@
-[{"text":"Functions","items":[{"text":"rollupCommand","link":"/dist/functions/rollupCommand"}]}]
+[{"text":"Interfaces","items":[{"text":"IContext","link":"/dist/interfaces/IContext"},{"text":"RunCommand","link":"/dist/interfaces/RunCommand"},{"text":"hookOptions","link":"/dist/interfaces/hookOptions"}]},{"text":"Functions","items":[{"text":"rollupCommand","link":"/dist/functions/rollupCommand"}]}]
