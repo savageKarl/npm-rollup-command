@@ -53,9 +53,9 @@ jobs:
           touch .vitepress/dist/.nojekyll
           cd .vitepress
           pwd
+          cd dist
+          pwd
           ls
-          ls dist
-          ls dist/dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
