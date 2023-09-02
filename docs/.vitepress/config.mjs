@@ -5,11 +5,12 @@ import apidocConfig from '../apidocConfig.json'
 import pkg from '../../package.json'
 
 const name = pkg.name
+const path = name.replace(/([a-z]+-)/, 'npm-')
 
 export default defineConfig({
-	base: `/npm-rollup-command/`,
-	title: `savage-rollup-command`,
-	head: [[`link`, { rel: `icon`, href: `/npm-rollup-command/savage.ico` }]],
+	base: `/${path}/`,
+	title: `${name}`,
+	head: [[`link`, { rel: `icon`, href: `/${path}/savage.ico` }]],
 	themeConfig: {
 		logo: {
 			src: '/savage.png',

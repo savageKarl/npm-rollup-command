@@ -52,6 +52,7 @@ jobs:
           pnpm docs:build 
           touch .vitepress/dist/.nojekyll
           cd .vitepress
+          pwd
           ls
           ls dist
           ls dist/dist

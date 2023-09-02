@@ -27,7 +27,6 @@ async function main() {
 		plugin: ['typedoc-plugin-markdown'],
 		allReflectionsHaveOwnDocument: true,
 		hideBreadcrumbs: true
-		// name: 'motherfuck'
 		// disableSources: true
 	})
 
