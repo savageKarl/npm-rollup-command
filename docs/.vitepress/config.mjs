@@ -7,7 +7,7 @@ import pkg from '../../package.json'
 const name = pkg.name
 
 export default defineConfig({
-	base: `/${name}/`,
+	base: `/npm-rollup-command/`,
 	title: `${name}`,
 	head: [[`link`, { rel: `icon`, href: `/${name}/savage.ico` }]],
 	themeConfig: {
