@@ -51,9 +51,8 @@ jobs:
           cd docs
           pnpm docs:build 
           touch .vitepress/dist/.nojekyll
-      - name: Build with VitePress
-        run: |
           cd .vitepress
+          ls
           ls dist
           ls dist/dist
       - name: Upload artifact
